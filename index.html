@@ -10,32 +10,33 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{font-size:16px;-webkit-font-smoothing:antialiased}
-body{overflow:hidden;height:100vh;font-family:'Red Hat Text',sans-serif;color:#151515;line-height:1.5;background:#F2F2F2}
+body{overflow:hidden;height:100vh;font-family:'Red Hat Text',sans-serif;color:var(--text);line-height:1.5;background:var(--bg)}
 h1,h2,h3,h4{font-family:'Red Hat Display',sans-serif;font-weight:700;line-height:1.2}
 
 :root{
-  --red:#EE0000;--red-dark:#A60000;--red-light:#FCE3E3;--red-bg:#FEF0F0;
-  --white:#FFF;--g10:#F2F2F2;--g20:#E0E0E0;--g30:#C7C7C7;--g40:#A3A3A3;
-  --g50:#707070;--g60:#4D4D4D;--g70:#383838;--g80:#292929;--g95:#151515;
-  --blue:#0066CC;--blue-l:#E7F1FA;--green:#63993D;--green-l:#E4F5E1;
-  --orange:#F0561D;--orange-l:#FFF3EC;--teal:#37A3A3;--purple:#5E40BE;
-  --yellow:#FFCC17;--yellow-l:#FFF9E5;
+  --red:#EE0000;--red-dark:#FF6060;--red-light:#3D1111;--red-bg:#2A0F0F;
+  --white:#1F1F1F;--g10:#151515;--g20:#2A2A2A;--g30:#383838;--g40:#4D4D4D;
+  --g50:#8A8A8A;--g60:#B0B0B0;--g70:#D0D0D0;--g80:#E0E0E0;--g95:#F2F2F2;
+  --blue:#4DA3FF;--blue-l:#0D2240;--green:#7FBF5F;--green-l:#142A0F;
+  --orange:#FF8C5A;--orange-l:#2A1A0F;--teal:#5FCECE;--purple:#9B85E0;
+  --yellow:#FFD84D;--yellow-l:#2A2410;
+  --bg:#0C0C0C;--text:#E8E8E8;--card-bg:#1A1A1A;--card-border:#2A2A2A;
   --fd:'Red Hat Display',sans-serif;--ft:'Red Hat Text',sans-serif;--fm:'Red Hat Mono',monospace;
 }
 
 /* ---- LAYOUT ---- */
 .app{display:flex;flex-direction:column;height:100vh}
 .topbar{height:6px;background:var(--red);flex-shrink:0}
-.main{flex:1;overflow-y:auto;display:flex;justify-content:center;padding:40px 32px 100px}
+.main{flex:1;overflow-y:auto;display:flex;justify-content:center;padding:40px 32px 80px;background:var(--bg)}
 .slide-wrap{max-width:960px;width:100%;animation:fadeUp .35s ease}
 @keyframes fadeUp{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
 
 /* ---- BOTTOM NAV ---- */
-.nav{position:fixed;bottom:0;left:0;right:0;height:60px;background:var(--white);border-top:1px solid var(--g20);display:flex;align-items:center;padding:0 24px;gap:16px;z-index:100}
+.nav{height:60px;flex-shrink:0;background:var(--card-bg);border-top:1px solid var(--g20);display:flex;align-items:center;padding:0 24px;gap:16px;z-index:100}
 .nav__section{font-family:var(--fd);font-size:13px;font-weight:600;color:var(--red);min-width:120px;white-space:nowrap}
 .nav__mid{display:flex;align-items:center;gap:12px;flex:1;justify-content:center}
-.nav__btn{font-family:var(--ft);font-size:14px;font-weight:500;padding:8px 20px;border-radius:4px;cursor:pointer;border:1px solid var(--g30);background:var(--white);color:var(--g70);transition:all .15s;display:flex;align-items:center;gap:6px}
-.nav__btn:hover{border-color:var(--g50);background:var(--g10)}
+.nav__btn{font-family:var(--ft);font-size:14px;font-weight:500;padding:8px 20px;border-radius:4px;cursor:pointer;border:1px solid var(--g30);background:var(--card-bg);color:var(--g60);transition:all .15s;display:flex;align-items:center;gap:6px}
+.nav__btn:hover{border-color:var(--g50);background:var(--g20)}
 .nav__btn:disabled{opacity:.35;cursor:default}
 .nav__btn--go{background:var(--blue);color:var(--white);border-color:var(--blue)}
 .nav__btn--go:hover{background:#004D99}
@@ -43,7 +44,7 @@ h1,h2,h3,h4{font-family:'Red Hat Display',sans-serif;font-weight:700;line-height
 .nav__bar{width:160px;height:4px;background:var(--g20);border-radius:2px;overflow:hidden}
 .nav__fill{height:100%;background:var(--red);transition:width .3s;border-radius:2px}
 .nav__tabs{display:flex;gap:4px;margin-left:auto}
-.nav__tab{font-family:var(--ft);font-size:11px;padding:4px 10px;border-radius:12px;border:1px solid var(--g20);background:var(--white);color:var(--g50);cursor:pointer;white-space:nowrap;transition:all .15s}
+.nav__tab{font-family:var(--ft);font-size:11px;padding:4px 10px;border-radius:12px;border:1px solid var(--g30);background:var(--card-bg);color:var(--g50);cursor:pointer;white-space:nowrap;transition:all .15s}
 .nav__tab:hover{border-color:var(--g40)}
 .nav__tab.on{background:var(--red);color:var(--white);border-color:var(--red)}
 
@@ -53,7 +54,7 @@ h1,h2,h3,h4{font-family:'Red Hat Display',sans-serif;font-weight:700;line-height
 .hero__title{font-family:var(--fd);font-size:2.6rem;font-weight:900;margin-bottom:10px}
 .hero__sub{font-size:1.15rem;color:var(--g50);max-width:640px;margin:0 auto}
 
-.card{background:var(--white);border:1px solid var(--g20);border-radius:8px;padding:24px;margin-bottom:16px}
+.card{background:var(--card-bg);border:1px solid var(--card-border);border-radius:8px;padding:24px;margin-bottom:16px}
 .card--red{border-left:4px solid var(--red)}
 .card--blue{border-left:4px solid var(--blue)}
 .card--green{border-left:4px solid var(--green)}
@@ -71,7 +72,7 @@ h1,h2,h3,h4{font-family:'Red Hat Display',sans-serif;font-weight:700;line-height
 .tag--orange{background:var(--orange-l);color:var(--orange)}
 .tag--teal{background:var(--teal);color:var(--white)}
 
-.callout{background:var(--red-bg);border:1px solid var(--red-light);border-left:4px solid var(--red);border-radius:6px;padding:16px 20px;margin:20px 0;display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--g70);line-height:1.6}
+.callout{background:var(--red-bg);border:1px solid var(--red-light);border-left:4px solid var(--red);border-radius:6px;padding:16px 20px;margin:20px 0;display:flex;align-items:flex-start;gap:12px;font-size:14px;color:var(--g60);line-height:1.6}
 .callout strong{color:var(--red-dark)}
 .callout--blue{background:var(--blue-l);border-color:#B8D4F0;border-left-color:var(--blue)}
 .callout--blue strong{color:var(--blue)}
@@ -79,7 +80,7 @@ h1,h2,h3,h4{font-family:'Red Hat Display',sans-serif;font-weight:700;line-height
 .callout--green strong{color:var(--green)}
 
 .tbl{width:100%;border-collapse:collapse;font-size:14px}
-.tbl th{text-align:left;padding:12px 16px;font-family:var(--ft);font-weight:600;color:var(--g70);border-bottom:2px solid var(--g20);font-size:13px}
+.tbl th{text-align:left;padding:12px 16px;font-family:var(--ft);font-weight:600;color:var(--g80);border-bottom:2px solid var(--g30);font-size:13px}
 .tbl td{padding:12px 16px;border-bottom:1px solid var(--g20);color:var(--g60)}
 .tbl .good{color:var(--green);font-weight:600}
 .tbl .warn{color:var(--orange);font-weight:600}
@@ -90,18 +91,18 @@ h1,h2,h3,h4{font-family:'Red Hat Display',sans-serif;font-weight:700;line-height
 
 /* ---- SCREENSHOTS ---- */
 .screenshot{margin:24px 0;text-align:center}
-.screenshot img{max-width:100%;border-radius:8px;border:1px solid var(--g20);box-shadow:0 4px 20px rgba(0,0,0,.12)}
+.screenshot img{max-width:100%;border-radius:8px;border:1px solid var(--g30);box-shadow:0 4px 24px rgba(0,0,0,.4)}
 .screenshot__cap{font-family:var(--ft);font-size:12px;color:var(--g50);margin-top:8px;font-style:italic}
 
 /* ---- TIMELINE ---- */
 .timeline{margin:24px 0;padding-left:20px;border-left:3px solid var(--g20)}
 .tl-item{position:relative;padding:0 0 20px 24px}
 .tl-item:last-child{padding-bottom:0}
-.tl-dot{position:absolute;left:-32px;top:2px;width:16px;height:16px;border-radius:50%;border:3px solid var(--g30);background:var(--white)}
+.tl-dot{position:absolute;left:-32px;top:2px;width:16px;height:16px;border-radius:50%;border:3px solid var(--g30);background:var(--card-bg)}
 .tl-dot.on{border-color:var(--blue);background:var(--blue)}
 .tl-dot.ok{border-color:var(--green);background:var(--green)}
 .tl-dot.wr{border-color:var(--orange);background:var(--orange)}
-.tl-day{font-family:var(--fd);font-weight:700;font-size:13px;color:var(--g70);margin-bottom:2px}
+.tl-day{font-family:var(--fd);font-weight:700;font-size:13px;color:var(--g80);margin-bottom:2px}
 .tl-txt{font-size:14px;color:var(--g50)}
 
 /* ---- METRICS ---- */
@@ -116,18 +117,18 @@ h1,h2,h3,h4{font-family:'Red Hat Display',sans-serif;font-weight:700;line-height
 .vs-hdr{font-family:var(--fd);font-weight:700;font-size:1rem;padding:12px 16px;border-radius:8px 8px 0 0;text-align:center}
 .vs-hdr--std{background:var(--orange-l);color:var(--orange)}
 .vs-hdr--roll{background:var(--green-l);color:var(--green)}
-.vs-body{background:var(--white);border:1px solid var(--g20);border-top:none;border-radius:0 0 8px 8px;padding:20px}
+.vs-body{background:var(--card-bg);border:1px solid var(--card-border);border-top:none;border-radius:0 0 8px 8px;padding:20px}
 
 /* ---- NUMBERED LIST ---- */
 .nlist{counter-reset:ns;margin:16px 0}
 .nlist__i{counter-increment:ns;display:flex;align-items:flex-start;gap:12px;padding:10px 0;border-bottom:1px solid var(--g20)}
-.nlist__i::before{content:counter(ns);font-family:var(--fd);font-weight:700;font-size:13px;width:28px;height:28px;border-radius:50%;background:var(--g10);color:var(--g60);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.nlist__i::before{content:counter(ns);font-family:var(--fd);font-weight:700;font-size:13px;width:28px;height:28px;border-radius:50%;background:var(--g20);color:var(--g60);display:flex;align-items:center;justify-content:center;flex-shrink:0}
 
 .hint{margin-top:32px;font-size:13px;color:var(--g40);text-align:center}
 
 @media(max-width:800px){
   .grid2,.vs{grid-template-columns:1fr}
-  .main{padding:24px 16px 100px}
+  .main{padding:24px 16px 80px}
   .hero__title{font-size:1.8rem}
   .nav__tabs{display:none}
   .nav__section{display:none}
@@ -163,19 +164,19 @@ const SEC=[
 /* ============================================================
    SVG DIAGRAM HELPERS
    ============================================================ */
-function svgBox(x,y,w,h,label,sub,fill='#FFF',stroke='#E0E0E0',textColor='#151515'){
+function svgBox(x,y,w,h,label,sub,fill='#1A1A1A',stroke='#2A2A2A',textColor='#E8E8E8'){
   return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" fill="${fill}" stroke="${stroke}" stroke-width="2"/>
   <text x="${x+w/2}" y="${y+h/2-(sub?6:0)}" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="${textColor}">${label}</text>
   ${sub?`<text x="${x+w/2}" y="${y+h/2+14}" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="${textColor}" opacity=".6">${sub}</text>`:''}`;
 }
-function svgArrow(x1,y1,x2,y2,color='#C7C7C7',dashed=false){
+function svgArrow(x1,y1,x2,y2,color='#4D4D4D',dashed=false){
   const dx=x2-x1,dy=y2-y1,len=Math.sqrt(dx*dx+dy*dy);
   const ux=dx/len,uy=dy/len;
   const ax=x2-ux*8,ay=y2-uy*8;
   return `<line x1="${x1}" y1="${y1}" x2="${ax}" y2="${ay}" stroke="${color}" stroke-width="2" ${dashed?'stroke-dasharray="6 4"':''}/>
   <polygon points="${x2},${y2} ${ax-uy*5},${ay+ux*5} ${ax+uy*5},${ay-ux*5}" fill="${color}"/>`;
 }
-function svgLabel(x,y,text,color='#707070',size=11){
+function svgLabel(x,y,text,color='#8A8A8A',size=11){
   return `<text x="${x}" y="${y}" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="${size}" fill="${color}">${text}</text>`;
 }
 
@@ -238,17 +239,17 @@ const STEPS=[
   <p style="color:var(--g50);margin-bottom:8px">A Content View is a curated, filterable collection of repository content. It controls which packages, errata, and modules are available to your hosts.</p>
   <div class="diagram">
     <svg viewBox="0 0 800 280" xmlns="http://www.w3.org/2000/svg">
-      ${svgBox(20,20,180,60,'RHEL 10 BaseOS','4,015 packages','#FFF','#0066CC','#151515')}
-      ${svgBox(20,100,180,60,'RHEL 10 AppStream','9,162 packages','#FFF','#0066CC','#151515')}
-      ${svgBox(20,180,180,60,'Satellite Client 6','10 packages','#FFF','#0066CC','#151515')}
-      ${svgArrow(200,50,310,130,'#0066CC')}
-      ${svgArrow(200,130,310,130,'#0066CC')}
-      ${svgArrow(200,210,310,130,'#0066CC')}
-      ${svgLabel(260,115,'Select','#0066CC')}
-      ${svgBox(310,80,220,100,'Content View','Curated snapshot','#E7F1FA','#0066CC','#0066CC')}
+      ${svgBox(20,20,180,60,'RHEL 10 BaseOS','4,015 packages','#0D2240','#4DA3FF','#E8E8E8')}
+      ${svgBox(20,100,180,60,'RHEL 10 AppStream','9,162 packages','#0D2240','#4DA3FF','#E8E8E8')}
+      ${svgBox(20,180,180,60,'Satellite Client 6','10 packages','#0D2240','#4DA3FF','#E8E8E8')}
+      ${svgArrow(200,50,310,130,'#4DA3FF')}
+      ${svgArrow(200,130,310,130,'#4DA3FF')}
+      ${svgArrow(200,210,310,130,'#4DA3FF')}
+      ${svgLabel(260,115,'Select','#4DA3FF')}
+      ${svgBox(310,80,220,100,'Content View','Curated snapshot','#0D2240','#4DA3FF','#4DA3FF')}
       ${svgArrow(530,130,600,130,'#C7C7C7')}
-      ${svgLabel(565,120,'Publish','#707070')}
-      ${svgBox(600,80,180,100,'Version 1.0','Immutable snapshot','#F2F2F2','#E0E0E0','#4D4D4D')}
+      ${svgLabel(565,120,'Publish','#5A5A5A')}
+      ${svgBox(600,80,180,100,'Version 1.0','Immutable snapshot','#2A2A2A','#383838','#B0B0B0')}
       ${svgLabel(400,260,'Repositories are assembled into a Content View, then published as a frozen version.','#707070',12)}
     </svg>
   </div>
@@ -265,20 +266,20 @@ const STEPS=[
   <p style="color:var(--g50);margin-bottom:16px">With a standard Content View, every content update follows a multi-step process: create, publish a version, then manually promote it through each lifecycle environment.</p>
   <div class="diagram">
     <svg viewBox="0 0 820 200" xmlns="http://www.w3.org/2000/svg">
-      <text x="410" y="18" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#151515">Step 1: Create and publish</text>
-      ${svgBox(20,35,180,60,'Repositories','RHEL 10 BaseOS, AppStream','#FFF','#0066CC','#151515')}
-      ${svgArrow(200,65,260,65,'#0066CC')}
-      ${svgLabel(230,55,'Add','#0066CC')}
-      ${svgBox(260,35,200,60,'Content View','RHEL10-Standard-CV','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(460,65,520,65,'#707070')}
-      ${svgLabel(490,55,'Publish','#707070')}
-      ${svgBox(520,35,120,60,'Version 1.0','Snapshot','#F2F2F2','#383838','#383838')}
-      ${svgArrow(640,65,680,65,'#63993D')}
-      ${svgBox(680,35,120,60,'Library','v1.0','#E4F5E1','#63993D','#63993D')}
-      <text x="410" y="135" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#707070">Publishing creates an immutable snapshot and places it in Library.</text>
-      <text x="410" y="155" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="12" fill="#A3A3A3">No hosts can use this content until it is promoted to their environment.</text>
-      <rect x="20" y="170" width="780" height="3" rx="1" fill="#E0E0E0"/>
-      <text x="410" y="192" text-anchor="middle" font-family="Red Hat Mono,monospace" font-size="11" fill="#A3A3A3">Admin action required &#9888;</text>
+      <text x="410" y="18" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#E8E8E8">Step 1: Create and publish</text>
+      ${svgBox(20,35,180,60,'Repositories','RHEL 10 BaseOS, AppStream','#0D2240','#4DA3FF','#E8E8E8')}
+      ${svgArrow(200,65,260,65,'#4DA3FF')}
+      ${svgLabel(230,55,'Add','#4DA3FF')}
+      ${svgBox(260,35,200,60,'Content View','RHEL10-Standard-CV','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(460,65,520,65,'#5A5A5A')}
+      ${svgLabel(490,55,'Publish','#5A5A5A')}
+      ${svgBox(520,35,120,60,'Version 1.0','Snapshot','#2A2A2A','#8A8A8A','#B0B0B0')}
+      ${svgArrow(640,65,680,65,'#7FBF5F')}
+      ${svgBox(680,35,120,60,'Library','v1.0','#142A0F','#7FBF5F','#7FBF5F')}
+      <text x="410" y="135" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#8A8A8A">Publishing creates an immutable snapshot and places it in Library.</text>
+      <text x="410" y="155" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="12" fill="#5A5A5A">No hosts can use this content until it is promoted to their environment.</text>
+      <rect x="20" y="170" width="780" height="3" rx="1" fill="#2A2A2A"/>
+      <text x="410" y="192" text-anchor="middle" font-family="Red Hat Mono,monospace" font-size="11" fill="#5A5A5A">Admin action required &#9888;</text>
     </svg>
   </div>
   <div class="callout"><span style="font-size:18px;flex-shrink:0">&#128221;</span><div><strong>Publishing is a manual step.</strong> An administrator must explicitly trigger it each time repository content changes. Until published, new packages and errata remain unavailable to any Content View consumers.</div></div>
@@ -289,36 +290,36 @@ const STEPS=[
   <p style="color:var(--g50);margin-bottom:16px">After publishing, Version 1.0 exists only in Library. It must be manually promoted to each successive environment.</p>
   <div class="diagram">
     <svg viewBox="0 0 820 320" xmlns="http://www.w3.org/2000/svg">
-      ${svgBox(20,30,150,70,'Library','v1.0 &#10004;','#E4F5E1','#63993D','#63993D')}
-      ${svgArrow(170,65,230,65,'#0066CC')}
-      <text x="200" y="50" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#0066CC">Promote</text>
-      ${svgBox(230,30,150,70,'Development','v1.0','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(380,65,440,65,'#0066CC')}
-      <text x="410" y="50" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#0066CC">Promote</text>
-      ${svgBox(440,30,150,70,'Testing','v1.0','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(590,65,650,65,'#0066CC')}
-      <text x="620" y="50" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#0066CC">Promote</text>
-      ${svgBox(650,30,150,70,'Production','v1.0','#E7F1FA','#0066CC','#0066CC')}
+      ${svgBox(20,30,150,70,'Library','v1.0 &#10004;','#142A0F','#7FBF5F','#7FBF5F')}
+      ${svgArrow(170,65,230,65,'#4DA3FF')}
+      <text x="200" y="50" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#4DA3FF">Promote</text>
+      ${svgBox(230,30,150,70,'Development','v1.0','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(380,65,440,65,'#4DA3FF')}
+      <text x="410" y="50" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#4DA3FF">Promote</text>
+      ${svgBox(440,30,150,70,'Testing','v1.0','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(590,65,650,65,'#4DA3FF')}
+      <text x="620" y="50" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#4DA3FF">Promote</text>
+      ${svgBox(650,30,150,70,'Production','v1.0','#0D2240','#4DA3FF','#4DA3FF')}
 
-      <line x1="20" y1="130" x2="800" y2="130" stroke="#E0E0E0" stroke-width="1"/>
-      <text x="410" y="152" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#151515">Timeline for a single publish-and-promote cycle</text>
+      <line x1="20" y1="130" x2="800" y2="130" stroke="#2A2A2A" stroke-width="1"/>
+      <text x="410" y="152" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#E8E8E8">Timeline for a single publish-and-promote cycle</text>
 
-      <line x1="60" y1="175" x2="60" y2="290" stroke="#E0E0E0" stroke-width="2"/>
-      <circle cx="60" cy="185" r="7" fill="#63993D"/>
-      <text x="80" y="189" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#383838">Day 0</text>
-      <text x="160" y="189" font-family="Red Hat Text,sans-serif" font-size="12" fill="#707070">Published to Library</text>
+      <line x1="60" y1="175" x2="60" y2="290" stroke="#2A2A2A" stroke-width="2"/>
+      <circle cx="60" cy="185" r="7" fill="#7FBF5F"/>
+      <text x="80" y="189" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#B0B0B0">Day 0</text>
+      <text x="160" y="189" font-family="Red Hat Text,sans-serif" font-size="12" fill="#8A8A8A">Published to Library</text>
 
-      <circle cx="60" cy="215" r="7" fill="#0066CC"/>
-      <text x="80" y="219" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#383838">Day 1</text>
-      <text x="160" y="219" font-family="Red Hat Text,sans-serif" font-size="12" fill="#707070">Admin promotes to Development (manual)</text>
+      <circle cx="60" cy="215" r="7" fill="#4DA3FF"/>
+      <text x="80" y="219" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#B0B0B0">Day 1</text>
+      <text x="160" y="219" font-family="Red Hat Text,sans-serif" font-size="12" fill="#8A8A8A">Admin promotes to Development (manual)</text>
 
-      <circle cx="60" cy="245" r="7" fill="#0066CC"/>
-      <text x="80" y="249" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#383838">Day 5</text>
-      <text x="160" y="249" font-family="Red Hat Text,sans-serif" font-size="12" fill="#707070">Validated, promoted to Testing (manual)</text>
+      <circle cx="60" cy="245" r="7" fill="#4DA3FF"/>
+      <text x="80" y="249" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#B0B0B0">Day 5</text>
+      <text x="160" y="249" font-family="Red Hat Text,sans-serif" font-size="12" fill="#8A8A8A">Validated, promoted to Testing (manual)</text>
 
-      <circle cx="60" cy="275" r="7" fill="#0066CC"/>
-      <text x="80" y="279" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#383838">Day 14</text>
-      <text x="160" y="279" font-family="Red Hat Text,sans-serif" font-size="12" fill="#707070">Validated, promoted to Production (manual)</text>
+      <circle cx="60" cy="275" r="7" fill="#4DA3FF"/>
+      <text x="80" y="279" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#B0B0B0">Day 14</text>
+      <text x="160" y="279" font-family="Red Hat Text,sans-serif" font-size="12" fill="#8A8A8A">Validated, promoted to Production (manual)</text>
 
       <!-- spacer -->
     </svg>
@@ -335,32 +336,32 @@ const STEPS=[
   <p style="color:var(--g50);margin-bottom:16px">Over time, the Content View accumulates versions. Each repository sync with new errata triggers the same multi-step cycle.</p>
   <div class="diagram">
     <svg viewBox="0 0 820 300" xmlns="http://www.w3.org/2000/svg">
-      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#151515">Content View version history</text>
+      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#E8E8E8">Content View version history</text>
 
-      ${svgBox(20,40,120,50,'Version 1.0','Jan 15','#F2F2F2','#E0E0E0','#707070')}
-      ${svgBox(160,40,120,50,'Version 2.0','Feb 3','#F2F2F2','#E0E0E0','#707070')}
-      ${svgBox(300,40,120,50,'Version 3.0','Feb 20','#F2F2F2','#E0E0E0','#707070')}
-      ${svgBox(440,40,120,50,'Version 4.0','Mar 8','#F2F2F2','#E0E0E0','#707070')}
-      ${svgBox(580,40,120,50,'Version 5.0','Mar 22','#E7F1FA','#0066CC','#0066CC')}
-      <text x="720" y="70" font-family="Red Hat Text,sans-serif" font-size="14" fill="#A3A3A3">...</text>
+      ${svgBox(20,40,120,50,'Version 1.0','Jan 15','#2A2A2A','#383838','#8A8A8A')}
+      ${svgBox(160,40,120,50,'Version 2.0','Feb 3','#2A2A2A','#383838','#8A8A8A')}
+      ${svgBox(300,40,120,50,'Version 3.0','Feb 20','#2A2A2A','#383838','#8A8A8A')}
+      ${svgBox(440,40,120,50,'Version 4.0','Mar 8','#2A2A2A','#383838','#8A8A8A')}
+      ${svgBox(580,40,120,50,'Version 5.0','Mar 22','#0D2240','#4DA3FF','#4DA3FF')}
+      <text x="720" y="70" font-family="Red Hat Text,sans-serif" font-size="14" fill="#5A5A5A">...</text>
 
-      <text x="80" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Published</text>
-      <text x="80" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Promoted x3</text>
-      <text x="220" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Published</text>
-      <text x="220" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Promoted x3</text>
-      <text x="360" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Published</text>
-      <text x="360" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Promoted x3</text>
-      <text x="500" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Published</text>
-      <text x="500" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#A3A3A3">Promoted x3</text>
-      <text x="640" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#0066CC">Latest</text>
+      <text x="80" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Published</text>
+      <text x="80" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Promoted x3</text>
+      <text x="220" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Published</text>
+      <text x="220" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Promoted x3</text>
+      <text x="360" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Published</text>
+      <text x="360" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Promoted x3</text>
+      <text x="500" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Published</text>
+      <text x="500" y="122" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#5A5A5A">Promoted x3</text>
+      <text x="640" y="110" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#4DA3FF">Latest</text>
 
-      <rect x="20" y="145" width="780" height="3" rx="1" fill="#E0E0E0"/>
-      <text x="410" y="175" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#F0561D">Every version requires the same manual cycle</text>
+      <rect x="20" y="145" width="780" height="3" rx="1" fill="#2A2A2A"/>
+      <text x="410" y="175" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#FF8C5A">Every version requires the same manual cycle</text>
 
-      <rect x="80" y="195" width="660" height="85" rx="8" fill="#FFF3EC" stroke="#F0561D" stroke-width="1.5"/>
-      <text x="100" y="220" font-family="Red Hat Text,sans-serif" font-weight="600" font-size="13" fill="#F0561D">For each new version you must:</text>
-      <text x="120" y="242" font-family="Red Hat Text,sans-serif" font-size="12" fill="#4D4D4D">1. Publish new version &nbsp;&nbsp; 2. Promote to Dev &nbsp;&nbsp; 3. Validate</text>
-      <text x="120" y="262" font-family="Red Hat Text,sans-serif" font-size="12" fill="#4D4D4D">4. Promote to Testing &nbsp;&nbsp; 5. Validate &nbsp;&nbsp; 6. Promote to Production</text>
+      <rect x="80" y="195" width="660" height="85" rx="8" fill="#2A1A0F" stroke="#FF8C5A" stroke-width="1.5"/>
+      <text x="100" y="220" font-family="Red Hat Text,sans-serif" font-weight="600" font-size="13" fill="#FF8C5A">For each new version you must:</text>
+      <text x="120" y="242" font-family="Red Hat Text,sans-serif" font-size="12" fill="#B0B0B0">1. Publish new version &nbsp;&nbsp; 2. Promote to Dev &nbsp;&nbsp; 3. Validate</text>
+      <text x="120" y="262" font-family="Red Hat Text,sans-serif" font-size="12" fill="#B0B0B0">4. Promote to Testing &nbsp;&nbsp; 5. Validate &nbsp;&nbsp; 6. Promote to Production</text>
     </svg>
   </div>
   <div class="callout"><span style="font-size:18px;flex-shrink:0">&#128161;</span><div><strong>For production, this control is essential.</strong> But for dev and test environments that simply want the latest content, 6 manual steps per update is pure overhead. What if there was a better way?</div></div>
@@ -370,52 +371,52 @@ const STEPS=[
   <h2 style="margin-bottom:16px">Standard Content View: full workflow diagram</h2>
   <div class="diagram">
     <svg viewBox="0 0 820 400" xmlns="http://www.w3.org/2000/svg">
-      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#151515">Standard Content View publishing workflow</text>
+      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#E8E8E8">Standard Content View publishing workflow</text>
 
       <!-- CDN -->
-      ${svgBox(20,50,140,60,'Red Hat CDN','Packages &amp; errata','#FEF0F0','#EE0000','#A60000')}
+      ${svgBox(20,50,140,60,'Red Hat CDN','Packages &amp; errata','#2A0F0F','#EE0000','#FF6060')}
       ${svgArrow(160,80,220,80,'#EE0000')}
-      ${svgLabel(190,70,'Sync','#A60000')}
+      ${svgLabel(190,70,'Sync','#FF6060')}
 
       <!-- Satellite Repos -->
-      ${svgBox(220,50,160,60,'Satellite Repos','Synced content','#FFF','#E0E0E0','#151515')}
-      ${svgArrow(380,80,440,80,'#707070')}
-      ${svgLabel(410,70,'Add','#707070')}
+      ${svgBox(220,50,160,60,'Satellite Repos','Synced content','#1A1A1A','#2A2A2A','#E8E8E8')}
+      ${svgArrow(380,80,440,80,'#5A5A5A')}
+      ${svgLabel(410,70,'Add','#5A5A5A')}
 
       <!-- Content View -->
-      ${svgBox(440,40,160,80,'Content View','RHEL10-Standard-CV','#E7F1FA','#0066CC','#0066CC')}
+      ${svgBox(440,40,160,80,'Content View','RHEL10-Standard-CV','#0D2240','#4DA3FF','#4DA3FF')}
 
       <!-- Publish -->
-      ${svgArrow(520,120,520,160,'#383838')}
-      ${svgLabel(548,145,'Publish','#383838')}
-      <text x="570" y="155" font-family="Red Hat Text,sans-serif" font-size="10" fill="#F0561D">&#9888; Manual</text>
+      ${svgArrow(520,120,520,160,'#8A8A8A')}
+      ${svgLabel(548,145,'Publish','#8A8A8A')}
+      <text x="570" y="155" font-family="Red Hat Text,sans-serif" font-size="10" fill="#FF8C5A">&#9888; Manual</text>
 
       <!-- Version -->
-      ${svgBox(440,160,160,50,'Version N.0','Immutable snapshot','#F2F2F2','#383838','#383838')}
+      ${svgBox(440,160,160,50,'Version N.0','Immutable snapshot','#2A2A2A','#8A8A8A','#B0B0B0')}
 
       <!-- Promote chain -->
-      ${svgArrow(520,210,520,245,'#63993D')}
-      ${svgBox(80,245,140,55,'Library','v N.0','#E4F5E1','#63993D','#63993D')}
+      ${svgArrow(520,210,520,245,'#7FBF5F')}
+      ${svgBox(80,245,140,55,'Library','v N.0','#142A0F','#7FBF5F','#7FBF5F')}
 
-      ${svgArrow(220,272,290,272,'#0066CC')}
-      <text x="255" y="262" font-family="Red Hat Text,sans-serif" font-size="9" fill="#F0561D">Manual</text>
-      ${svgBox(290,245,140,55,'Development','v N.0','#E7F1FA','#0066CC','#0066CC')}
+      ${svgArrow(220,272,290,272,'#4DA3FF')}
+      <text x="255" y="262" font-family="Red Hat Text,sans-serif" font-size="9" fill="#FF8C5A">Manual</text>
+      ${svgBox(290,245,140,55,'Development','v N.0','#0D2240','#4DA3FF','#4DA3FF')}
 
-      ${svgArrow(430,272,500,272,'#0066CC')}
-      <text x="465" y="262" font-family="Red Hat Text,sans-serif" font-size="9" fill="#F0561D">Manual</text>
-      ${svgBox(500,245,140,55,'Testing','v N.0','#E7F1FA','#0066CC','#0066CC')}
+      ${svgArrow(430,272,500,272,'#4DA3FF')}
+      <text x="465" y="262" font-family="Red Hat Text,sans-serif" font-size="9" fill="#FF8C5A">Manual</text>
+      ${svgBox(500,245,140,55,'Testing','v N.0','#0D2240','#4DA3FF','#4DA3FF')}
 
-      ${svgArrow(640,272,710,272,'#0066CC')}
-      <text x="675" y="262" font-family="Red Hat Text,sans-serif" font-size="9" fill="#F0561D">Manual</text>
-      ${svgBox(710,245,90,55,'Production','v N.0','#E7F1FA','#0066CC','#0066CC')}
+      ${svgArrow(640,272,710,272,'#4DA3FF')}
+      <text x="675" y="262" font-family="Red Hat Text,sans-serif" font-size="9" fill="#FF8C5A">Manual</text>
+      ${svgBox(710,245,90,55,'Production','v N.0','#0D2240','#4DA3FF','#4DA3FF')}
 
       <!-- Hosts -->
       ${svgArrow(305,300,305,340,'#707070',true)}
       ${svgArrow(515,300,515,340,'#707070',true)}
       ${svgArrow(755,300,755,340,'#707070',true)}
-      ${svgBox(240,340,130,45,'Dev Hosts','','#FFF','#E0E0E0','#707070')}
-      ${svgBox(450,340,130,45,'QA Hosts','','#FFF','#E0E0E0','#707070')}
-      ${svgBox(700,340,110,45,'Prod Hosts','','#FFF','#E0E0E0','#707070')}
+      ${svgBox(240,340,130,45,'Dev Hosts','','#1A1A1A','#383838','#8A8A8A')}
+      ${svgBox(450,340,130,45,'QA Hosts','','#1A1A1A','#383838','#8A8A8A')}
+      ${svgBox(700,340,110,45,'Prod Hosts','','#1A1A1A','#383838','#8A8A8A')}
     </svg>
   </div>
   <div class="screenshot">
@@ -430,26 +431,26 @@ const STEPS=[
   <p style="color:var(--g50);margin-bottom:16px">A critical CVE is published. Red Hat releases errata. Satellite syncs the repository. Now what?</p>
   <div class="diagram">
     <svg viewBox="0 0 820 240" xmlns="http://www.w3.org/2000/svg">
-      <rect x="20" y="10" width="780" height="220" rx="8" fill="#FFF3EC" stroke="#F0561D" stroke-width="1.5"/>
-      <text x="410" y="38" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#F0561D">Standard CV: repeat the entire cycle</text>
+      <rect x="20" y="10" width="780" height="220" rx="8" fill="#2A1A0F" stroke="#FF8C5A" stroke-width="1.5"/>
+      <text x="410" y="38" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#FF8C5A">Standard CV: repeat the entire cycle</text>
 
-      ${svgBox(40,55,110,40,'New errata','345 security','#FEF0F0','#EE0000','#A60000')}
-      ${svgArrow(150,75,190,75,'#707070')}
-      ${svgBox(190,55,110,40,'Publish v6.0','~15 min','#F2F2F2','#383838','#383838')}
-      ${svgArrow(300,75,340,75,'#707070')}
-      ${svgBox(340,55,120,40,'Promote Dev','~5 min','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(460,75,500,75,'#707070')}
-      ${svgBox(500,55,100,40,'Validate','1-3 days','#FFF','#E0E0E0','#707070')}
-      ${svgArrow(600,75,640,75,'#707070')}
-      ${svgBox(640,55,140,40,'Promote Test','~5 min','#E7F1FA','#0066CC','#0066CC')}
+      ${svgBox(40,55,110,40,'New errata','345 security','#2A0F0F','#EE0000','#FF6060')}
+      ${svgArrow(150,75,190,75,'#5A5A5A')}
+      ${svgBox(190,55,110,40,'Publish v6.0','~15 min','#2A2A2A','#8A8A8A','#B0B0B0')}
+      ${svgArrow(300,75,340,75,'#5A5A5A')}
+      ${svgBox(340,55,120,40,'Promote Dev','~5 min','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(460,75,500,75,'#5A5A5A')}
+      ${svgBox(500,55,100,40,'Validate','1-3 days','#1A1A1A','#383838','#8A8A8A')}
+      ${svgArrow(600,75,640,75,'#5A5A5A')}
+      ${svgBox(640,55,140,40,'Promote Test','~5 min','#0D2240','#4DA3FF','#4DA3FF')}
 
-      ${svgArrow(710,95,710,120,'#707070')}
-      ${svgBox(590,120,140,40,'Validate QA','3-7 days','#FFF','#E0E0E0','#707070')}
-      ${svgArrow(590,140,520,140,'#707070')}
-      ${svgBox(350,120,170,40,'Promote Production','~5 min','#E7F1FA','#0066CC','#0066CC')}
+      ${svgArrow(710,95,710,120,'#5A5A5A')}
+      ${svgBox(590,120,140,40,'Validate QA','3-7 days','#1A1A1A','#383838','#8A8A8A')}
+      ${svgArrow(590,140,520,140,'#5A5A5A')}
+      ${svgBox(350,120,170,40,'Promote Production','~5 min','#0D2240','#4DA3FF','#4DA3FF')}
 
-      <text x="410" y="195" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="20" fill="#F0561D">~14 days &nbsp; | &nbsp; 30+ minutes admin time</text>
-      <text x="410" y="215" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="12" fill="#707070">Dev servers patched on Day 1 (with manual work). Production on Day 14.</text>
+      <text x="410" y="195" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="20" fill="#FF8C5A">~14 days &nbsp; | &nbsp; 30+ minutes admin time</text>
+      <text x="410" y="215" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="12" fill="#8A8A8A">Dev servers patched on Day 1 (with manual work). Production on Day 14.</text>
     </svg>
   </div>
 `;} },
@@ -485,27 +486,27 @@ const STEPS=[
   <p style="color:var(--g50);margin-bottom:8px">A Rolling Content View is created with a single flag. It does not create versions. It does not require publishing or promotion. It always reflects the latest synced content.</p>
   <div class="diagram">
     <svg viewBox="0 0 820 260" xmlns="http://www.w3.org/2000/svg">
-      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#151515">Rolling Content View: no publish, no promote</text>
+      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#E8E8E8">Rolling Content View: no publish, no promote</text>
 
-      ${svgBox(20,50,180,60,'Repositories','RHEL 10 BaseOS, AppStream','#FFF','#0066CC','#151515')}
-      ${svgArrow(200,80,280,80,'#0066CC')}
-      ${svgLabel(240,70,'Add','#0066CC')}
-      ${svgBox(280,40,220,80,'Rolling Content View','RHEL10-Rolling-CV','#E4F5E1','#63993D','#63993D')}
-      <text x="390" y="135" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#63993D">Always latest, no versions</text>
+      ${svgBox(20,50,180,60,'Repositories','RHEL 10 BaseOS, AppStream','#0D2240','#4DA3FF','#E8E8E8')}
+      ${svgArrow(200,80,280,80,'#4DA3FF')}
+      ${svgLabel(240,70,'Add','#4DA3FF')}
+      ${svgBox(280,40,220,80,'Rolling Content View','RHEL10-Rolling-CV','#142A0F','#7FBF5F','#7FBF5F')}
+      <text x="390" y="135" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#7FBF5F">Always latest, no versions</text>
 
-      ${svgArrow(500,80,580,80,'#63993D')}
-      ${svgLabel(540,70,'Auto','#63993D')}
+      ${svgArrow(500,80,580,80,'#7FBF5F')}
+      ${svgLabel(540,70,'Auto','#7FBF5F')}
 
-      ${svgBox(580,50,200,60,'Library','Always current','#E4F5E1','#63993D','#63993D')}
+      ${svgBox(580,50,200,60,'Library','Always current','#142A0F','#7FBF5F','#7FBF5F')}
 
       ${svgArrow(680,110,680,155,'#63993D',true)}
 
-      ${svgBox(580,155,200,50,'Dev &amp; Test Hosts','Receive latest content','#FFF','#63993D','#383838')}
+      ${svgBox(580,155,200,50,'Dev &amp; Test Hosts','Receive latest content','#1A1A1A','#7FBF5F','#D0D0D0')}
 
-      <rect x="40" y="170" width="160" height="60" rx="6" fill="#FFF" stroke="#E0E0E0" stroke-width="1.5"/>
-      <text x="120" y="188" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#C7C7C7" text-decoration="line-through">Publish</text>
-      <text x="120" y="210" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#C7C7C7" text-decoration="line-through">Promote</text>
-      <text x="120" y="240" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#63993D">Not needed</text>
+      <rect x="40" y="170" width="160" height="60" rx="6" fill="#1A1A1A" stroke="#2A2A2A" stroke-width="1.5"/>
+      <text x="120" y="188" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#4D4D4D" text-decoration="line-through">Publish</text>
+      <text x="120" y="210" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#4D4D4D" text-decoration="line-through">Promote</text>
+      <text x="120" y="240" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#7FBF5F">Not needed</text>
     </svg>
   </div>
   <div class="screenshot">
@@ -519,41 +520,41 @@ const STEPS=[
   <h2 style="margin-bottom:16px">Rolling Content View: full workflow diagram</h2>
   <div class="diagram">
     <svg viewBox="0 0 820 310" xmlns="http://www.w3.org/2000/svg">
-      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#151515">Rolling Content View workflow</text>
+      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#E8E8E8">Rolling Content View workflow</text>
 
       <!-- CDN -->
-      ${svgBox(20,50,140,60,'Red Hat CDN','Packages &amp; errata','#FEF0F0','#EE0000','#A60000')}
+      ${svgBox(20,50,140,60,'Red Hat CDN','Packages &amp; errata','#2A0F0F','#EE0000','#FF6060')}
       ${svgArrow(160,80,240,80,'#EE0000')}
-      ${svgLabel(200,70,'Sync','#A60000')}
+      ${svgLabel(200,70,'Sync','#FF6060')}
 
       <!-- Satellite Repos -->
-      ${svgBox(240,50,160,60,'Satellite Repos','Synced content','#FFF','#E0E0E0','#151515')}
-      ${svgArrow(400,80,470,80,'#63993D')}
-      ${svgLabel(435,70,'Auto','#63993D')}
+      ${svgBox(240,50,160,60,'Satellite Repos','Synced content','#1A1A1A','#2A2A2A','#E8E8E8')}
+      ${svgArrow(400,80,470,80,'#7FBF5F')}
+      ${svgLabel(435,70,'Auto','#7FBF5F')}
 
       <!-- Rolling CV -->
-      ${svgBox(470,40,210,80,'Rolling Content View','RHEL10-Rolling-CV','#E4F5E1','#63993D','#63993D')}
-      <text x="575" y="135" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#63993D">Automatically reflects latest sync</text>
+      ${svgBox(470,40,210,80,'Rolling Content View','RHEL10-Rolling-CV','#142A0F','#7FBF5F','#7FBF5F')}
+      <text x="575" y="135" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="11" fill="#7FBF5F">Automatically reflects latest sync</text>
 
       <!-- Direct to Library (no versions) -->
-      ${svgArrow(575,120,575,170,'#63993D')}
-      ${svgBox(470,170,210,55,'Library','Always latest content','#E4F5E1','#63993D','#63993D')}
+      ${svgArrow(575,120,575,170,'#7FBF5F')}
+      ${svgBox(470,170,210,55,'Library','Always latest content','#142A0F','#7FBF5F','#7FBF5F')}
 
       <!-- Hosts -->
       ${svgArrow(575,225,575,260,'#63993D',true)}
-      ${svgBox(470,260,210,40,'Dev &amp; Test Hosts','','#FFF','#63993D','#383838')}
+      ${svgBox(470,260,210,40,'Dev &amp; Test Hosts','','#1A1A1A','#7FBF5F','#D0D0D0')}
 
       <!-- "What's missing" callout -->
-      <rect x="20" y="155" width="370" height="140" rx="8" fill="#E4F5E1" stroke="#63993D" stroke-width="1.5"/>
-      <text x="205" y="180" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#63993D">Steps eliminated</text>
-      <text x="50" y="205" font-family="Red Hat Text,sans-serif" font-size="13" fill="#4D4D4D" text-decoration="line-through">Publish new version</text>
-      <text x="240" y="205" font-family="Red Hat Text,sans-serif" font-size="13" fill="#63993D">&#10003; Automatic</text>
-      <text x="50" y="228" font-family="Red Hat Text,sans-serif" font-size="13" fill="#4D4D4D" text-decoration="line-through">Promote to Development</text>
-      <text x="280" y="228" font-family="Red Hat Text,sans-serif" font-size="13" fill="#63993D">&#10003; Not needed</text>
-      <text x="50" y="251" font-family="Red Hat Text,sans-serif" font-size="13" fill="#4D4D4D" text-decoration="line-through">Promote to Testing</text>
-      <text x="260" y="251" font-family="Red Hat Text,sans-serif" font-size="13" fill="#63993D">&#10003; Not needed</text>
-      <text x="50" y="274" font-family="Red Hat Text,sans-serif" font-size="13" fill="#4D4D4D" text-decoration="line-through">Promote to Production</text>
-      <text x="275" y="274" font-family="Red Hat Text,sans-serif" font-size="13" fill="#63993D">&#10003; Not needed</text>
+      <rect x="20" y="155" width="370" height="140" rx="8" fill="#142A0F" stroke="#7FBF5F" stroke-width="1.5"/>
+      <text x="205" y="180" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="14" fill="#7FBF5F">Steps eliminated</text>
+      <text x="50" y="205" font-family="Red Hat Text,sans-serif" font-size="13" fill="#B0B0B0" text-decoration="line-through">Publish new version</text>
+      <text x="240" y="205" font-family="Red Hat Text,sans-serif" font-size="13" fill="#7FBF5F">&#10003; Automatic</text>
+      <text x="50" y="228" font-family="Red Hat Text,sans-serif" font-size="13" fill="#B0B0B0" text-decoration="line-through">Promote to Development</text>
+      <text x="280" y="228" font-family="Red Hat Text,sans-serif" font-size="13" fill="#7FBF5F">&#10003; Not needed</text>
+      <text x="50" y="251" font-family="Red Hat Text,sans-serif" font-size="13" fill="#B0B0B0" text-decoration="line-through">Promote to Testing</text>
+      <text x="260" y="251" font-family="Red Hat Text,sans-serif" font-size="13" fill="#7FBF5F">&#10003; Not needed</text>
+      <text x="50" y="274" font-family="Red Hat Text,sans-serif" font-size="13" fill="#B0B0B0" text-decoration="line-through">Promote to Production</text>
+      <text x="275" y="274" font-family="Red Hat Text,sans-serif" font-size="13" fill="#7FBF5F">&#10003; Not needed</text>
     </svg>
   </div>
   <div class="metrics">
@@ -573,35 +574,35 @@ const STEPS=[
   <div class="diagram">
     <svg viewBox="0 0 820 320" xmlns="http://www.w3.org/2000/svg">
       <!-- Standard side -->
-      <rect x="10" y="10" width="390" height="300" rx="8" fill="#FFF3EC" stroke="#F0561D" stroke-width="1.5"/>
-      <text x="205" y="35" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#F0561D">Standard Content View</text>
-      ${svgBox(30,50,100,35,'Errata synced','','#FEF0F0','#EE0000','#A60000')}
-      ${svgArrow(130,67,160,67,'#707070')}
-      ${svgBox(160,50,80,35,'Publish','Manual','#F2F2F2','#383838','#383838')}
-      ${svgArrow(240,67,270,67,'#707070')}
-      ${svgBox(270,50,110,35,'Promote Dev','Manual','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(325,85,325,105,'#707070')}
-      ${svgBox(260,105,120,35,'Validate','1-3 days','#FFF','#E0E0E0','#707070')}
-      ${svgArrow(325,140,325,155,'#707070')}
-      ${svgBox(255,155,130,35,'Promote Test','Manual','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(325,190,325,205,'#707070')}
-      ${svgBox(260,205,120,35,'Validate QA','3-7 days','#FFF','#E0E0E0','#707070')}
-      ${svgArrow(325,240,325,255,'#707070')}
-      ${svgBox(250,255,140,35,'Promote Prod','Manual','#E7F1FA','#0066CC','#0066CC')}
-      <text x="120" y="280" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="16" fill="#F0561D">~14 days</text>
+      <rect x="10" y="10" width="390" height="300" rx="8" fill="#2A1A0F" stroke="#FF8C5A" stroke-width="1.5"/>
+      <text x="205" y="35" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#FF8C5A">Standard Content View</text>
+      ${svgBox(30,50,100,35,'Errata synced','','#2A0F0F','#EE0000','#FF6060')}
+      ${svgArrow(130,67,160,67,'#5A5A5A')}
+      ${svgBox(160,50,80,35,'Publish','Manual','#2A2A2A','#8A8A8A','#B0B0B0')}
+      ${svgArrow(240,67,270,67,'#5A5A5A')}
+      ${svgBox(270,50,110,35,'Promote Dev','Manual','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(325,85,325,105,'#5A5A5A')}
+      ${svgBox(260,105,120,35,'Validate','1-3 days','#1A1A1A','#383838','#8A8A8A')}
+      ${svgArrow(325,140,325,155,'#5A5A5A')}
+      ${svgBox(255,155,130,35,'Promote Test','Manual','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(325,190,325,205,'#5A5A5A')}
+      ${svgBox(260,205,120,35,'Validate QA','3-7 days','#1A1A1A','#383838','#8A8A8A')}
+      ${svgArrow(325,240,325,255,'#5A5A5A')}
+      ${svgBox(250,255,140,35,'Promote Prod','Manual','#0D2240','#4DA3FF','#4DA3FF')}
+      <text x="120" y="280" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="16" fill="#FF8C5A">~14 days</text>
 
       <!-- Rolling side -->
-      <rect x="420" y="10" width="390" height="300" rx="8" fill="#E4F5E1" stroke="#63993D" stroke-width="1.5"/>
-      <text x="615" y="35" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#63993D">Rolling Content View</text>
-      ${svgBox(440,50,100,35,'Errata synced','','#FEF0F0','#EE0000','#A60000')}
-      ${svgArrow(540,67,580,67,'#63993D')}
-      ${svgBox(580,50,210,55,'Rolling CV auto-updates','Content immediately available','#E4F5E1','#63993D','#63993D')}
+      <rect x="420" y="10" width="390" height="300" rx="8" fill="#142A0F" stroke="#7FBF5F" stroke-width="1.5"/>
+      <text x="615" y="35" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="13" fill="#7FBF5F">Rolling Content View</text>
+      ${svgBox(440,50,100,35,'Errata synced','','#2A0F0F','#EE0000','#FF6060')}
+      ${svgArrow(540,67,580,67,'#7FBF5F')}
+      ${svgBox(580,50,210,55,'Rolling CV auto-updates','Content immediately available','#142A0F','#7FBF5F','#7FBF5F')}
       ${svgArrow(685,105,685,140,'#63993D',true)}
-      ${svgBox(580,140,210,50,'Dev &amp; Test Hosts','Patched at next check-in','#FFF','#63993D','#383838')}
+      ${svgBox(580,140,210,50,'Dev &amp; Test Hosts','Patched at next check-in','#1A1A1A','#7FBF5F','#D0D0D0')}
 
-      <text x="685" y="230" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="20" fill="#63993D">&#10003;</text>
-      <text x="615" y="260" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="22" fill="#63993D">Day 0</text>
-      <text x="615" y="285" font-family="Red Hat Text,sans-serif" font-size="13" fill="#4D4D4D">Zero admin time</text>
+      <text x="685" y="230" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="20" fill="#7FBF5F">&#10003;</text>
+      <text x="615" y="260" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="22" fill="#7FBF5F">Day 0</text>
+      <text x="615" y="285" font-family="Red Hat Text,sans-serif" font-size="13" fill="#B0B0B0">Zero admin time</text>
     </svg>
   </div>
 `;} },
@@ -663,38 +664,38 @@ const STEPS=[
   <p style="color:var(--g50);margin-bottom:16px">Use the right tool for each environment. Combine Rolling and Standard Content Views.</p>
   <div class="diagram">
     <svg viewBox="0 0 820 340" xmlns="http://www.w3.org/2000/svg">
-      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#151515">Recommended: hybrid architecture</text>
+      <text x="410" y="20" text-anchor="middle" font-family="Red Hat Display,sans-serif" font-weight="900" font-size="15" fill="#E8E8E8">Recommended: hybrid architecture</text>
 
       <!-- CDN -->
-      ${svgBox(20,60,140,60,'Red Hat CDN','Packages &amp; errata','#FEF0F0','#EE0000','#A60000')}
+      ${svgBox(20,60,140,60,'Red Hat CDN','Packages &amp; errata','#2A0F0F','#EE0000','#FF6060')}
       ${svgArrow(160,90,240,90,'#EE0000')}
-      ${svgBox(240,60,160,60,'Satellite Repos','Synced content','#FFF','#E0E0E0','#151515')}
+      ${svgBox(240,60,160,60,'Satellite Repos','Synced content','#1A1A1A','#2A2A2A','#E8E8E8')}
 
       <!-- Split -->
-      ${svgArrow(400,75,480,55,'#63993D')}
-      ${svgArrow(400,105,480,175,'#0066CC')}
+      ${svgArrow(400,75,480,55,'#7FBF5F')}
+      ${svgArrow(400,105,480,175,'#4DA3FF')}
 
       <!-- Rolling lane -->
-      <rect x="470" y="25" width="340" height="100" rx="8" fill="#E4F5E1" stroke="#63993D" stroke-width="1.5" stroke-dasharray="0"/>
-      <text x="490" y="48" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#63993D">Dev &amp; Test lane</text>
-      ${svgBox(490,55,150,50,'Rolling CV','Auto-updated','#E4F5E1','#63993D','#63993D')}
-      ${svgArrow(640,80,690,80,'#63993D')}
-      ${svgBox(690,60,100,40,'Dev Hosts','','#FFF','#63993D','#383838')}
-      <text x="740" y="115" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#63993D">&#10003; Zero overhead</text>
+      <rect x="470" y="25" width="340" height="100" rx="8" fill="#142A0F" stroke="#7FBF5F" stroke-width="1.5" stroke-dasharray="0"/>
+      <text x="490" y="48" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#7FBF5F">Dev &amp; Test lane</text>
+      ${svgBox(490,55,150,50,'Rolling CV','Auto-updated','#142A0F','#7FBF5F','#7FBF5F')}
+      ${svgArrow(640,80,690,80,'#7FBF5F')}
+      ${svgBox(690,60,100,40,'Dev Hosts','','#1A1A1A','#7FBF5F','#D0D0D0')}
+      <text x="740" y="115" text-anchor="middle" font-family="Red Hat Text,sans-serif" font-size="10" fill="#7FBF5F">&#10003; Zero overhead</text>
 
       <!-- Standard lane -->
-      <rect x="470" y="145" width="340" height="180" rx="8" fill="#E7F1FA" stroke="#0066CC" stroke-width="1.5"/>
-      <text x="490" y="168" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#0066CC">Production lane</text>
-      ${svgBox(490,175,120,45,'Standard CV','Publish v N.0','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(610,197,640,197,'#0066CC')}
-      ${svgBox(640,180,60,35,'Dev','v N','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(700,197,720,197,'#0066CC')}
-      ${svgBox(720,180,60,35,'QA','v N','#E7F1FA','#0066CC','#0066CC')}
-      ${svgArrow(750,215,750,240,'#0066CC')}
-      ${svgBox(700,240,80,40,'Prod','v N','#E7F1FA','#0066CC','#0066CC')}
+      <rect x="470" y="145" width="340" height="180" rx="8" fill="#0D2240" stroke="#4DA3FF" stroke-width="1.5"/>
+      <text x="490" y="168" font-family="Red Hat Display,sans-serif" font-weight="700" font-size="12" fill="#4DA3FF">Production lane</text>
+      ${svgBox(490,175,120,45,'Standard CV','Publish v N.0','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(610,197,640,197,'#4DA3FF')}
+      ${svgBox(640,180,60,35,'Dev','v N','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(700,197,720,197,'#4DA3FF')}
+      ${svgBox(720,180,60,35,'QA','v N','#0D2240','#4DA3FF','#4DA3FF')}
+      ${svgArrow(750,215,750,240,'#4DA3FF')}
+      ${svgBox(700,240,80,40,'Prod','v N','#0D2240','#4DA3FF','#4DA3FF')}
       ${svgArrow(700,280,700,300,'#0066CC',true)}
-      ${svgBox(650,300,100,20,'Prod Hosts','','#FFF','#0066CC','#383838')}
-      <text x="555" y="275" font-family="Red Hat Text,sans-serif" font-size="10" fill="#0066CC">&#128274; Versioned, staged</text>
+      ${svgBox(650,300,100,20,'Prod Hosts','','#1A1A1A','#4DA3FF','#D0D0D0')}
+      <text x="555" y="275" font-family="Red Hat Text,sans-serif" font-size="10" fill="#4DA3FF">&#128274; Versioned, staged</text>
     </svg>
   </div>
   <div class="grid3">
