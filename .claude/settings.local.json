@@ -11,7 +11,11 @@
       "Bash(/opt/homebrew/bin/npm init *)",
       "Bash(/opt/homebrew/bin/npm install *)",
       "Bash(/opt/homebrew/bin/npx playwright *)",
-      "Bash(/opt/homebrew/bin/node -e ' *)"
+      "Bash(/opt/homebrew/bin/node -e ' *)",
+      "Edit(~/.claude/skills/satellite-demo/**)"
+    ],
+    "additionalDirectories": [
+      "/Users/myee/.claude/skills"
     ]
   }
 }
